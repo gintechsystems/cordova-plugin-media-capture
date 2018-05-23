@@ -223,7 +223,7 @@
     // options could contain limit, duration, quality and mode
     // taking more than one video (limit) is only supported if provide own controls via cameraOverlayView property
     NSNumber* duration = [options objectForKey:@"duration"];
-    NSNumber* quality = [options objectForKey:@"quality"];
+    NSNumber* pickerQuality = [options objectForKey:@"picker_quality"];
     NSString* mediaType = nil;
 
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -268,8 +268,8 @@
         if ([pickerController respondsToSelector:@selector(cameraCaptureMode)]) {
             pickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
 
-            if (quality) {
-                switch([quality intValue]) {
+            if (pickerQuality) {
+                switch([pickerQuality intValue]) {
                     case 0: 
                         pickerController.videoQuality = UIImagePickerControllerQualityTypeLow;
                         break;
